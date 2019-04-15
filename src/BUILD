@@ -1,5 +1,13 @@
+cc_library(
+    name = "partition",
+    srcs = ["partition.cpp"],
+    hdrs = ["partition.h"],
+)
+
 cc_binary(
     name = "test",
-    srcs = ["test.cpp", "partition.cpp"],
-    hdrs = ["partition.h"],
+    srcs = ["test.cpp"],
+    deps = [
+    	":partition"
+    ],
 )
