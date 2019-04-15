@@ -15,6 +15,7 @@ void DataBlock::output(){
 
 Partition::Partition(std::vector<DataBlock*> &blocks){
 	num_size = 0;
+	head = blocks[0];
 	DataBlock *previous = nullptr;
 	for(DataBlock* item: blocks){
 		num_size += item->num_size;
@@ -23,6 +24,7 @@ Partition::Partition(std::vector<DataBlock*> &blocks){
 		}
 		previous = item;
 	}
+	previous->next = nullptr;
 }
 
 void Partition::output(){
