@@ -25,7 +25,7 @@ Partition::Partition(std::vector<DataBlock*> &blocks){
 	}
 }
 
-Partition::output(){
+void Partition::output(){
 	DataBlock *cur = head;
 	while(cur != nullptr){
 		cur->output();
