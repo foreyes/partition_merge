@@ -4,21 +4,27 @@
 #include <vector>
 
 struct DataBlock{
-	int num_size;
 	std::vector<int> nums;
 	DataBlock *next;
 
-	DataBlock(std::vector<int> &data);
+	DataBlock(std::vector<int> data);
+	int get_size();
 	void output();
 };
 
 class Partition{
 public:
-	int num_size;
-	DataBlock *head;
-
-	Partition(std::vector<DataBlock*> &blocks);
+	Partition(std::vector<DataBlock*> blocks);
+	int get_size();
+	bool get_next(int &x);
+	void reset();
+	void add_number(int x, int block_size);
 	void output();
+private:
+	int num_size, cur_pos;
+	DataBlock *head;
+	DataBlock *tail;
+	DataBlock *cur_block;
 };
 
 #endif
