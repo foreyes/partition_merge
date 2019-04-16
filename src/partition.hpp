@@ -79,7 +79,7 @@ public:
 		std::cout<<std::endl;
 	}
 	
-public:
+private:
 	int num_size, cur_pos;
 	DataBlock *head;
 	DataBlock *tail;
