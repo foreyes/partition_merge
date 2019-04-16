@@ -1,6 +1,6 @@
 #include <iostream>
 #include <vector>
-#include "partition.h"
+#include "partition.hpp"
 
 using namespace std;
 

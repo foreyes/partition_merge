@@ -1,7 +1,6 @@
 cc_library(
     name = "partition",
-    srcs = ["partition.cpp"],
-    hdrs = ["partition.h"],
+    srcs = ["partition.hpp"],
 )
 
 cc_binary(
