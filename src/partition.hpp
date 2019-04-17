@@ -74,6 +74,7 @@ public:
 		DataBlock *cur = head;
 		while(cur != nullptr){
 			cur->output();
+			std::cout<<" | ";
 			cur = cur->next;
 		}
 		std::cout<<std::endl;

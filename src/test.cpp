@@ -8,11 +8,11 @@
 using namespace std;
 
 void test(){
-	srand(2140506);
+	srand(41241);
 	Partition p[5];
 	vector<Partition*> data;
 	vector<int> nums;
-	for(int i = 0;i < 200;i++) nums.push_back(rand()%100);
+	for(int i = 0;i < 200;i++) nums.push_back(rand()%10000);
 	sort(nums.begin(),nums.end());
 	int cnt = 0;
 
@@ -23,8 +23,11 @@ void test(){
 	}
 	for(int i = 0;i < 5;i++){
 		data.push_back(&p[i]);
+		cout<<"Partition "<<i<<": ";
 		p[i].output();
 	}
+	cout<<endl;
+	cout<<"After merge:"<<endl;
 	LoserTree test(data);
 	test.merge()->output();
 }
