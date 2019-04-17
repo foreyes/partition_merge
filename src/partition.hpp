@@ -24,10 +24,13 @@ struct DataBlock{
 
 class Partition{
 public:
+	//Construct a empty Partition
 	Partition(){
 		head = tail = cur_block = nullptr;
 		num_size = cur_pos = 0;
 	}
+
+	//Construct a Partition from some data blocks
 	Partition(std::vector<DataBlock*> blocks){
 		head = cur_block = blocks[0];
 		tail = blocks[blocks.size()-1];
@@ -42,9 +45,12 @@ public:
 		}
 		previous->next = nullptr;
 	}
+
 	int get_size(){
 		return num_size;
 	}
+
+	//Get next value, and move forward
 	bool get_next(int &x){
 		if(cur_block == nullptr) return false;
 		while(cur_pos >= cur_block->get_size()){
@@ -56,10 +62,14 @@ public:
 		cur_pos++;
 		return true;
 	}
+
+	//Reset the current point to the front
 	void reset(){
 		cur_block = head;
 		cur_pos = 0;
 	}
+
+	//Add a number to the end of this Partition, with the given max data block size
 	void add_number(int x, int block_size = 128){
 		if(tail == nullptr){
 			cur_block = head = tail = new DataBlock(std::vector<int>());
@@ -70,6 +80,8 @@ public:
 		tail->nums.push_back(x);
 		num_size++;
 	}
+
+	//Output the whole Partition, blocks are separated by ' | '
 	void output(){
 		DataBlock *cur = head;
 		while(cur != nullptr){

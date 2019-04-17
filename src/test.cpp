@@ -8,6 +8,7 @@
 using namespace std;
 
 void test(){
+	//test data generat
 	srand(41241);
 	Partition p[5];
 	vector<Partition*> data;
@@ -21,6 +22,8 @@ void test(){
 			p[j].add_number(nums[cnt++], 5);
 		}
 	}
+
+	//Output and merge test
 	for(int i = 0;i < 5;i++){
 		data.push_back(&p[i]);
 		cout<<"Partition "<<i<<": ";
@@ -28,7 +31,7 @@ void test(){
 	}
 	cout<<endl;
 	cout<<"After merge:"<<endl;
-	LoserTree test(data);
+	LoserTree test(data);//data is a vector of Partition pointers
 	test.merge()->output();
 }
 

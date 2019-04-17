@@ -14,6 +14,7 @@ struct LoserNode{
 	LoserNode *right;
 	LoserNode *parent;
 
+	//Constructor of Loser Node
 	LoserNode(LoserNode *left = nullptr, LoserNode *right = nullptr): 
 		left(left), right(right){
 		if(left != nullptr) left->parent = this;
@@ -25,6 +26,7 @@ struct LoserNode{
 
 class LoserTree{
 public:
+	//Constructor, takes vector of Partition pointers and default data block size as arguments.
 	LoserTree(vector<Partition*> parts, int result_block_size = 128):
 		parts(parts), 
 		result_block_size(result_block_size){
@@ -55,6 +57,7 @@ public:
 		result = new Partition();
 	}
 
+	//Build up the whole Loser Tree
 	void build(LoserNode *cur){
 		if(cur->available) return;
 		build(cur->left);
@@ -67,6 +70,7 @@ public:
 		}
 	}
 
+	//Update competition informations after get_loser()
 	void update(LoserNode *cur){
 		if(cur->parent == nullptr) return;
 		if(cur->winner.first > cur->parent->loser.first){
@@ -78,6 +82,7 @@ public:
 		update(cur->parent);
 	}
 
+	//Erase a leaf node from the tree
 	void erase(LoserNode *cur){
 		if(cur->parent == nullptr){
 			cur->available = false;
@@ -102,6 +107,7 @@ public:
 		update(brother);
 	}
 
+	//Get the loser value, and updata competition
 	bool get_loser(int &x){
 		if(!root->available) return false;
 		x = root->winner.first;
@@ -117,6 +123,7 @@ public:
 		return true;
 	}
 
+	//The merge sorting function
 	Partition* merge(){
 		int x;
 		while(get_loser(x)){
@@ -125,7 +132,7 @@ public:
 		return result;
 	}
 
-public:
+private:
 	int result_block_size;
 	vector<Partition*> parts;
 	vector<LoserNode*> fetch;
